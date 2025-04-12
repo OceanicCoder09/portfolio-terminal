@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import Button from '../components/Button';
-import profileImage from '../assets/profile-anime.jpg'; // Make sure to add your image to the assets folder
+import profileImage from '../assets/profile-anime.jpg';
 
 function Home() {
   const [count, setCount] = useState(0);
@@ -74,9 +74,21 @@ function Home() {
       )}
 
       {/* Main content container */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full max-w-6xl mt-24 sm:mt-0">
+      <div className="flex flex-col sm:flex-row items-center justify-center w-full max-w-6xl mt-24 sm:mt-0">
+        {/* Anime Profile Image - Desktop (LEFT side with proper gap) */}
+        <div className="hidden sm:block w-64 h-64 relative animate-float mr-10 lg:mr-16"> {/* Added margin-right */}
+          <div className="absolute inset-0 bg-green-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
+          <img 
+            src={profileImage} 
+            alt="Anime-style portrait of Sarthak Mahadik"
+            className="relative w-full h-full object-contain rounded-full border-4 border-green-400 shadow-2xl z-10"
+          />
+          <div className="absolute -inset-6 border-2 border-green-300 rounded-full animate-spin-slow opacity-50"></div>
+          <div className="absolute -inset-8 border border-green-200 rounded-full animate-spin-slower opacity-30"></div>
+        </div>
+
         {/* Anime Profile Image - Mobile (above terminal) */}
-        <div className="sm:hidden w-48 h-48 relative mb-6 animate-float">
+        <div className="sm:hidden w-48 h-48 relative mb-8 animate-float"> {/* Increased margin-bottom */}
           <div className="absolute inset-0 bg-green-400 rounded-full blur-md opacity-30 animate-pulse"></div>
           <img 
             src={profileImage} 
@@ -88,6 +100,7 @@ function Home() {
 
         {/* Terminal Content */}
         <div className="bg-[#1c1c1e] border border-gray-700 rounded-xl p-4 sm:p-6 shadow-xl font-mono text-left w-full max-w-2xl animate-fade-in transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] hover:border-green-400 group">
+          {/* Rest of your terminal content remains exactly the same */}
           {/* Line 1 - Typing Animation */}
           <div className="text-green-400 text-sm sm:text-base mb-4 break-words">
             <span className="text-gray-400">sarthak@portfolio:~$ </span>
@@ -135,26 +148,14 @@ function Home() {
               <span className="text-gray-400">sarthak@portfolio:~$ </span>
               <span className="text-white">./download_resume.sh</span>
               <div className="mt-2 ml-4 sm:ml-6 text-gray-300 text-xs sm:text-sm">
-                <Button
-                  label="Click Here To Download My Resume"
-                  variant="outline"
-                  onClick={handleDownloadResume}
+                <Button 
+                  label="Click Here To Download My Resume" 
+                  variant="outline" 
+                  onClick={handleDownloadResume} 
                 />
               </div>
             </div>
           )}
-        </div>
-
-        {/* Anime Profile Image - Desktop (right side) */}
-        <div className="hidden sm:block w-64 h-64 relative animate-float">
-          <div className="absolute inset-0 bg-green-400 rounded-full blur-xl opacity-30 animate-pulse"></div>
-          <img 
-            src={profileImage} 
-            alt="Anime-style portrait of Sarthak Mahadik"
-            className="relative w-full h-full object-contain rounded-full border-4 border-green-400 shadow-2xl z-10"
-          />
-          <div className="absolute -inset-6 border-2 border-green-300 rounded-full animate-spin-slow opacity-50"></div>
-          <div className="absolute -inset-8 border border-green-200 rounded-full animate-spin-slower opacity-30"></div>
         </div>
       </div>
     </div>

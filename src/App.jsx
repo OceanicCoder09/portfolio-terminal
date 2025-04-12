@@ -6,6 +6,7 @@ import Projects from './pages/Project'
 import ConnectWithMe from './pages/ConnectWithMe'
 import Skills from './pages/Skills'
 import Coding from './pages/CodingProf'
+import Resume from './pages/Resume'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/connect" element={<ConnectWithMe />} />
         <Route path="/skills" element={<Skills />} />
         <Route path="/coding" element={<Coding />} />
+        <Route path="/resume" element={<Resume />} />
       </Routes>
     </Router>
   )

@@ -17,11 +17,11 @@ const projects = [
     demo: "https://brainly-frontend-topaz.vercel.app/"
   },
   {
-    title: "Portfolio v1",
+    title: "Portfolio",
     description: "My first portfolio website built with pure React.",
     tech: ["React", "Tailwind"],
-    github: "https://github.com/sarthak/portfolio-v1",
-    demo: "https://portfolio-v1.example.com"
+    github: "https://github.com/OceanicCoder09/portfolio-terminal.git",
+    demo: "https://portfolio-terminal-sable.vercel.app/"
   }
 ];
 
