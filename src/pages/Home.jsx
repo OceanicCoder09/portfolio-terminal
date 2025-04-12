@@ -24,8 +24,7 @@ function Home() {
   }, []);
 
   const handleDownloadResume = () => {
-    // Replace with your actual resume file path
-    const resumeUrl = '/resume.pdf'; // Place your resume in public folder
+    const resumeUrl = '/resume.pdf';
     const link = document.createElement('a');
     link.href = resumeUrl;
     link.download = 'Sarthak_Mahadik_Resume.pdf';
@@ -35,8 +34,9 @@ function Home() {
   };
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-b from-[#1e1f29] via-[#2e2f3a] to-[#1e1f29] flex items-center justify-center">
-      <div className='absolute top-6 right-6 flex gap-4 flex-wrap'>
+    <div className="w-screen min-h-screen bg-gradient-to-b from-[#1e1f29] via-[#2e2f3a] to-[#1e1f29] flex items-center justify-center p-4 sm:p-6">
+      {/* Responsive Navigation Buttons */}
+      <div className="absolute top-4 left-0 right-0 px-4 overflow-x-auto scrollbar-hide flex gap-2 sm:gap-4 flex-nowrap sm:flex-wrap justify-center sm:justify-end sm:right-6">
         <Button label="Home" variant="outline" onClick={() => navigate('/')} />
         <Button label="About Me" variant="outline" onClick={() => navigate('/about')} />
         <Button label="Projects" variant="outline" onClick={() => navigate('/projects')} />
@@ -45,9 +45,10 @@ function Home() {
         <Button label="Connect With Me" variant="outline" onClick={() => navigate('/connect')} />
       </div>
 
-      <div className="bg-[#1c1c1e] border border-gray-700 rounded-xl p-6 shadow-xl font-mono text-left w-[90%] max-w-2xl animate-fade-in transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] hover:border-green-400 group">
-        {/* Line 1 - Name with typing animation */}
-        <div className="text-green-400 text-base md:text-lg mb-4">
+      {/* Terminal-style Card */}
+      <div className="mt-24 sm:mt-0 bg-[#1c1c1e] border border-gray-700 rounded-xl p-4 sm:p-6 shadow-xl font-mono text-left w-full max-w-2xl animate-fade-in transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] hover:border-green-400 group">
+        {/* Line 1 - Typing Animation */}
+        <div className="text-green-400 text-sm sm:text-base mb-4 break-words">
           <span className="text-gray-400">sarthak@portfolio:~$ </span>
           <span className="text-white">echo </span>
           <span className="text-green-300">"{typedText}</span>
@@ -55,49 +56,48 @@ function Home() {
           <span className="text-green-300">{typedText.length === fullText.length ? '"' : ''}</span>
         </div>
 
-        {/* Line 2 - About - appears after typing completes */}
+        {/* About Section */}
         {typedText.length === fullText.length && (
-          <div className="text-cyan-300 text-sm md:text-base mt-6 animate-fade-in">
+          <div className="text-cyan-300 text-sm sm:text-base mt-6 animate-fade-in">
             <span className="text-gray-400">sarthak@portfolio:~$ </span>
             <span className="text-white">cat </span>
             <span className="text-purple-300">about.txt</span>
-            <div className="text-yellow-200 mt-2 ml-6 border-l-2 border-green-500 pl-4 py-2 transition-all duration-300 group-hover:border-green-400">
+            <div className="text-yellow-200 mt-2 ml-4 sm:ml-6 border-l-2 border-green-500 pl-3 sm:pl-4 py-2 transition-all duration-300 group-hover:border-green-400 text-xs sm:text-sm">
               "Full-stack developer with strong Java and DSA fundamentals"
-              <div className="mt-1 text-gray-300 text-xs md:text-sm">
+              <div className="mt-1 text-gray-300">
                 Enjoy solving complex problems and building efficient applications.
               </div>
-              <div className="mt-1 text-gray-300 text-xs md:text-sm">
+              <div className="mt-1 text-gray-300">
                 Focused on writing clean, maintainable code in Java and JavaScript.
               </div>
             </div>
-            <span className="text-gray-400 animate-blink ml-6">|</span>
+            <span className="text-gray-400 animate-blink ml-4 sm:ml-6">|</span>
           </div>
         )}
 
         {/* Education Section */}
         {typedText.length === fullText.length && (
-          <div className="text-cyan-300 text-sm md:text-base mt-6 animate-fade-in delay-300">
+          <div className="text-cyan-300 text-sm sm:text-base mt-6 animate-fade-in delay-300">
             <span className="text-gray-400">sarthak@portfolio:~$ </span>
             <span className="text-white">cat </span>
             <span className="text-blue-300">education.txt</span>
-            <div className="mt-2 ml-6 text-gray-300 space-y-1 text-xs md:text-sm">
+            <div className="mt-2 ml-4 sm:ml-6 text-gray-300 space-y-1 text-xs sm:text-sm">
               <div className="text-yellow-200">Bachelor of Technology in Computer Science</div>
               <div>Walchand College of Engineering, Sangli • 2023</div>
             </div>
           </div>
         )}
 
-        {/* Resume Download CTA inside terminal */}
+        {/* Resume Download Section */}
         {typedText.length === fullText.length && (
-          <div className="text-cyan-300 text-sm md:text-base mt-6 animate-fade-in delay-500">
+          <div className="text-cyan-300 text-sm sm:text-base mt-6 animate-fade-in delay-500">
             <span className="text-gray-400">sarthak@portfolio:~$ </span>
             <span className="text-white">./download_resume.sh</span>
-            <div className="mt-2 ml-6 text-gray-300 text-xs md:text-sm">
-              <Button 
-              label = "Click Here To Download My Resume"
-              variant='outline'
-              onClick={handleDownloadResume}
-    
+            <div className="mt-2 ml-4 sm:ml-6 text-gray-300 text-xs sm:text-sm">
+              <Button
+                label="Click Here To Download My Resume"
+                variant="outline"
+                onClick={handleDownloadResume}
               />
             </div>
           </div>

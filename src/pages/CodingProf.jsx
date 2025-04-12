@@ -7,21 +7,18 @@ function Coding() {
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
 
-  // Effect to trigger the entrance animation when component mounts
   useEffect(() => {
-    // Small delay to ensure the animation is noticeable
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
-    
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-b from-[#1e1f29] via-[#2e2f3a] to-[#1e1f29] flex items-center justify-center px-4">
-      
-      {/* Navigation Buttons */}
-      <div className='absolute top-6 right-6 flex gap-4 flex-wrap'>
+    <div className="w-screen min-h-screen bg-gradient-to-b from-[#1e1f29] via-[#2e2f3a] to-[#1e1f29] flex flex-col items-center pt-24 sm:pt-20 pb-10 px-4 font-mono">
+
+      {/* Responsive Nav */}
+      <div className="absolute top-4 left-0 right-0 px-4 overflow-x-auto scrollbar-hide flex gap-2 sm:gap-4 flex-nowrap sm:flex-wrap justify-center sm:justify-end sm:right-6">
         <Button label="Home" variant="outline" onClick={() => navigate('/')} />
         <Button label="About Me" variant="outline" onClick={() => navigate('/about')} />
         <Button label="Projects" variant="outline" onClick={() => navigate('/projects')} />
@@ -31,20 +28,18 @@ function Coding() {
       </div>
 
       {/* Terminal Card */}
-      <div className={`bg-[#1c1c1e] border border-gray-700 rounded-xl p-6 shadow-xl font-mono text-left w-full max-w-2xl transition-all duration-700 ${
+      <div className={`bg-[#1c1c1e] border border-gray-700 rounded-xl p-4 sm:p-6 shadow-xl text-left w-full max-w-2xl transition-all duration-700 ${
         isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-95'
       }`}>
-        
-        {/* Terminal-style heading */}
-        <div className="text-green-400 text-base md:text-lg mb-4">
+        <div className="text-green-400 text-sm sm:text-base mb-4">
           <span className="text-gray-400">sarthak@portfolio:~$ </span>
           <span className="text-white">cat </span>
           <span className="text-purple-300">coding.txt</span>
           <span className="text-gray-400 animate-blink">|</span>
         </div>
 
-        {/* Coding Platforms Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 text-sm">
+        {/* Coding Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-6 text-sm sm:text-base">
           <CodingCard
             name="LeetCode"
             stats="400+ problems solved"
@@ -81,13 +76,13 @@ function CodingCard({ name, stats, url, emoji, isVisible, delay }) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`border border-gray-700 rounded-lg p-4 hover:border-yellow-400 hover:shadow-md transition-all duration-500 ${
+      className={`border border-gray-700 rounded-lg p-4 sm:p-5 hover:border-yellow-400 hover:shadow-md transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 ${
         isVisible ? 'translate-y-0 opacity-100 rotate-0' : 'translate-y-10 opacity-0 rotate-2'
       }`}
       style={{ transitionDelay: `${delay + 300}ms` }}
     >
-      <div className="text-green-300 text-lg mb-2">{emoji} {name}</div>
-      <p className="text-gray-300">{stats}</p>
+      <div className="text-green-300 text-base sm:text-lg mb-1">{emoji} {name}</div>
+      <p className="text-gray-300 text-sm sm:text-base">{stats}</p>
     </a>
   );
 }
