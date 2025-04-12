@@ -27,6 +27,7 @@ const projects = [
 
 function Projects() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,17 +38,41 @@ function Projects() {
   return (
     <div className="w-screen min-h-screen bg-gradient-to-b from-[#1e1f29] via-[#2e2f3a] to-[#1e1f29] flex flex-col items-center pt-20 pb-10 px-4 font-mono">
 
-      {/* Navigation */}
-      <div className="absolute top-6 right-6 flex gap-3 flex-wrap justify-center sm:justify-end">
-        {["Home", "About Me", "Projects", "Skills", "Coding Profiles", "Connect With Me"].map((label, i) => (
-          <Button
-            key={i}
-            label={label}
-            variant="outline"
-            onClick={() => navigate(`/${label.toLowerCase().replace(/\s+/g, '')}`)}
-          />
-        ))}
+      {/* Hamburger Menu Button (mobile only) */}
+      <div className="sm:hidden absolute top-4 right-4 z-50">
+        <button 
+          className="flex flex-col justify-center items-center w-10 h-10"
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+        >
+          <span className={`block w-6 h-0.5 bg-gray-300 transition-all ${showMobileMenu ? 'rotate-45 translate-y-1.5' : 'mb-1.5'}`}></span>
+          <span className={`block w-6 h-0.5 bg-gray-300 transition-all ${showMobileMenu ? 'opacity-0' : 'mb-1.5'}`}></span>
+          <span className={`block w-6 h-0.5 bg-gray-300 transition-all ${showMobileMenu ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+        </button>
       </div>
+
+      {/* Navigation - Desktop (hidden on mobile) */}
+      <div className="hidden sm:flex absolute top-4 left-0 right-0 px-4 justify-center sm:justify-end sm:right-6 gap-2 sm:gap-4">
+        <Button label="Home" variant="outline" onClick={() => navigate('/')} />
+        <Button label="About Me" variant="outline" onClick={() => navigate('/about')} />
+        <Button label="Projects" variant="outline" onClick={() => navigate('/projects')} />
+        <Button label="Skills" variant="outline" onClick={() => navigate('/skills')} />
+        <Button label="Coding Profiles" variant="outline" onClick={() => navigate('/coding')} />
+        <Button label="Connect" variant="outline" onClick={() => navigate('/connect')} />
+      </div>
+
+      {/* Mobile Menu (only visible when toggled) */}
+      {showMobileMenu && (
+        <div className="sm:hidden absolute top-16 right-4 bg-[#1c1c1e] border border-gray-700 rounded-lg p-4 z-40 w-48 shadow-xl animate-fade-in">
+          <div className="flex flex-col gap-2">
+            <Button label="Home" variant="outline" onClick={() => { navigate('/'); setShowMobileMenu(false); }} fullWidth />
+            <Button label="About Me" variant="outline" onClick={() => { navigate('/about'); setShowMobileMenu(false); }} fullWidth />
+            <Button label="Projects" variant="outline" onClick={() => { navigate('/projects'); setShowMobileMenu(false); }} fullWidth />
+            <Button label="Skills" variant="outline" onClick={() => { navigate('/skills'); setShowMobileMenu(false); }} fullWidth />
+            <Button label="Coding Profiles" variant="outline" onClick={() => { navigate('/coding'); setShowMobileMenu(false); }} fullWidth />
+            <Button label="Connect" variant="outline" onClick={() => { navigate('/connect'); setShowMobileMenu(false); }} fullWidth />
+          </div>
+        </div>
+      )}
 
       {/* Terminal Header */}
       <div className={`bg-[#1c1c1e] border border-gray-700 rounded-t-xl p-4 shadow-xl w-[90%] max-w-4xl transition-all duration-700 ${
