@@ -151,7 +151,7 @@ function Home() {
                 <Button 
                   label="Click Here To Download My Resume" 
                   variant="outline" 
-                  onClick={handleDownloadResume} 
+                  onClick={()=> navigate('/resume')} 
                 />
               </div>
             </div>
