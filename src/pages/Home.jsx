@@ -83,7 +83,7 @@ function Home() {
             <span className="text-blue-300">education.txt</span>
             <div className="mt-2 ml-4 sm:ml-6 text-gray-300 space-y-1 text-xs sm:text-sm">
               <div className="text-yellow-200">Bachelor of Technology in Computer Science</div>
-              <div>Walchand College of Engineering, Sangli • 2023</div>
+              <div>Walchand College of Engineering, Sangli • 2026</div>
             </div>
           </div>
         )}
